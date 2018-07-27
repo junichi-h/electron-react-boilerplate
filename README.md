@@ -1,4 +1,4 @@
-# Electron width React & Redux Boilerplate :sushi:
+# Electron with React & Redux Boilerplate :sushi:
 
 Just a cool Boilerplate with React Redux :)
 
