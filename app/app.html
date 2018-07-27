@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ElectronReactBoilerplate</title>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="">
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    (function(window){
+
+      'use strict';
+
+      const scripts = [];
+
+      if(process.env.NODE_ENV === 'development'){
+        scripts.push('../dll/renderer.dev.dll.js');
+      }
+
+      // Dynamically insert the bundled app script in the renderer process
+      const port = process.env.PORT || 1212;
+      scripts.push(
+        (process.env.HOT)
+          ? 'http://localhost:' + port + '/dist/renderer.dev.js'
+          : './dist/renderer.prod.js'
+      );
+
+      document.write(
+        scripts
+          .map(script => `<script defer src="${script}"><\/script>`)
+          .join('')
+      );
+
+    })(window);
+  </script>
+</body>
+</html>

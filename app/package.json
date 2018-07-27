@@ -1,0 +1,13 @@
+{
+  "name": "ElectronReactBoilerplate",
+  "version": "1.0.0",
+  "main": "main.prod.js",
+  "author": "Junichi Honda <junichi.hnd@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts" : {
+    "electron-rebuild": "node -r babel-register ../internals/scripts/electron-re-build.js",
+    "postinstall": "yarn electron-rebuild"
+  },
+  "dependencies" : {}
+}
