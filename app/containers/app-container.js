@@ -10,7 +10,7 @@ import { Transition, TransitionGroup } from 'react-transition-group';
 import { sections } from '../constants/config';
 import Loader from '../components/loader';
 import Section from '../components/section';
-import { hideLoading } from '../reducers/section';
+import { hideLoading } from '../actions';
 import ButtonList from '../components/molecules/button-list';
 
 const Container = styled(TransitionGroup)`
@@ -64,14 +64,14 @@ const AppContainer = (props): React.Element => {
 				>
 					<div>
 						{ contents }
-            { buttons }
 					</div>
 				</Transition>
+        { buttons }
 			</Container>
 		</Fragment>
 	);
 };
-
+// reduxに繋げる
 const mapStateToProps = (state) => ({
 	isLoading: state.section.isLoading,
 	pageName: state.section.pageName,
@@ -86,6 +86,7 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(
+		// ここからstateless function
     lifecycle({
       componentDidMount() {
         this.props.hideLoading();
